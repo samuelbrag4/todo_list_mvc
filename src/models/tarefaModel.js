@@ -31,7 +31,7 @@ class TarefaModel {
   };
 
   // Remoção de tarefa
-  delerte = (id) => {
+  delete = (id) => {
     const index = this.tarefas.findIndex((t) => t.id === Number(id));
 
     if (index !== -1) {
