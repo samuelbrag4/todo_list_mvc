@@ -1,9 +1,11 @@
 import express from 'express';
+import tarefaController from '../controller/tarefaController';
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    res.send('Lista de tarefas');
-});
+router.get('/', tarefaController.getAll);
+router.post('/', tarefaController.create);
+router.put('/:id', tarefaController.update);
+router.delete('/:id', tarefaController.delete);
 
 export default router;
