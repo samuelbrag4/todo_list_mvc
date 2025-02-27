@@ -6,7 +6,7 @@ class TarefaModel {
   }
   getAll = () => this.tarefas;
 
-  // Cração de Nova Tarefa
+  // Criação de Nova Tarefa
   create = (descricao) => {
     const novaTarefa = {
       id: this.tarefas.length + 1,
@@ -20,11 +20,11 @@ class TarefaModel {
 
   // Atualização de Tarefa
   update = (id, descricao, finalizada) => {
-    const tarefa = this.tarefas.finf((t) => t.id === Number(id));
+    const tarefa = this.tarefas.find((t) => t.id === Number(id));
 
     if (tarefa) {
-        tarefa.concluida =
-            concluida !== undefined ? concluida : tarefa.concluida;
+        tarefa.finalizada =
+            finalizada !== undefined ? finalizada : tarefa.finalizada;
         return tarefa;
     }
     return null;

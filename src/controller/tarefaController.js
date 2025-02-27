@@ -8,16 +8,16 @@ class TarefaController {
 
     create = ({ body: { descricao } }, res) => {
         if (!descricao) {
-            return res.status(400).json({ erro: "A descrição é obrigatória mermao!!!!" });
+            return res.status(400).json({ erro: "A descrição é obrigatória." });
         }
         const novaTarefa = tarefaModel.create(descricao);
         res.status(201).json(novaTarefa);
     };
 
-    update = ({ params: { id }, body: { concluida } }, res) => {
-        const tarefaAtualizada = tarefaModel.update(id, concluida);
+    update = ({ params: { id }, body: { descricao, finalizada } }, res) => {
+        const tarefaAtualizada = tarefaModel.update(id, descricao, finalizada);
         if (!tarefaAtualizada) {
-            return res.status(404).json({ erro: "Tarefa não encontrada fi" });
+            return res.status(404).json({ erro: "Tarefa não encontrada." });
         }
         res.json(tarefaAtualizada);
     };
@@ -26,7 +26,7 @@ class TarefaController {
         const sucesso = tarefaModel.delete(id);
 
         if (!sucesso) {
-            return res.status(404).json({ erro: "Tarefa não encontrada filhão!" });
+            return res.status(404).json({ erro: "Tarefa não encontrada." });
         }
         res.status(204).send();
     };
